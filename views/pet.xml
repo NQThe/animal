@@ -1,0 +1,32 @@
+
+<odoo>
+    <data>
+        <!-- Cập nhật ID cho tree view -->
+        <record id="estate_property_tree_view" model="ir.ui.view">
+            <field name="name">Tree_View_Pet</field>
+            <field name="model">pet</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name='name'></field>
+               </tree>
+            </field>
+        </record>
+
+        
+        <!-- Actions -->
+        <record id="action_pet" model="ir.actions.act_window">
+            <field name="name">Animal</field>
+            <field name="res_model">pet</field>
+            <field name="view_mode">tree,form</field>
+            
+           
+        </record>
+
+        <!-- Menu -->
+        <menuitem id="menu_root" name="App Setting" />
+        <menuitem id="menu_pet" name="Pet" parent="menu_root"
+            action="action_pet" />
+        
+
+    </data>
+</odoo>

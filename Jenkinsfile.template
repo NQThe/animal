@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage('Deploy') {
+            steps {
+                sh '''
+                pwd
+                ls -al
+                docker-compose down
+                docker-compose up -d
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo 'Deploy Completed'
+        }
+    }
+}

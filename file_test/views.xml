@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <!-- Cập nhật ID cho tree view -->
+        <record id="tree_view_pet_caretakes" model="ir.ui.view">
+            <field name="name">Tree_View_Pet</field>
+            <field name="model">pet.caretaker.booking</field>
+            <field name="arch" type="xml">
+               <tree> 
+                    <field name='caretaker_id'/>
+                    <field name='pet_id'/>
+                    <field name='booking_date'/>
+                    <field name='booking_time'/>
+                    <field name='owner_id'/>
+                    <field name='status_booking'/>
+               </tree>
+            </field>
+        </record>
+        
+
+        <record id="form_view_pet_caretaker_bookings" model="ir.ui.view">
+            <field name="name">form_view_pet_caretaker_bookings</field>
+            <field name="model">pet.caretaker.booking</field>
+            <field name="arch" type="xml">
+                <form string="Form View Pet Profiles">
+                    <header>
+
+                        
+                        <!-- <button name="action_sold" string="Sold" type="object"
+                                attrs="{'invisible': [('status', '!=', 'offer_accepted')]}"/> -->
+                    
+                    </header>
+                    <sheet>
+                        <div class="Information">
+                            <div>
+                                <h1><field name='caretaker_id'/></h1>
+                            </div>
+                            <div>
+                                <h3><field name='pet_id'/></h3>
+                                <h3><field name='booking_date'/></h3>
+                                <h3><field name='booking_time'/></h3>
+                                <h3><field name='owner_id'/></h3>
+                                <h3><field name='status_booking'/></h3>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <!-- Actions -->
+        <record id="action_pet_caretaker_booking" model="ir.actions.act_window">
+            <field name="name">Animal</field>
+            <field name="res_model">pet.caretaker.booking</field>
+            <field name="view_mode">tree,form</field>
+            
+            <!-- <field name="search_view_id" ref="view_estate_property_search"/>
+            <field name="context">{'search_default_available': True}</field> -->
+        </record>
+
+        <!-- Menu -->
+        
+        <menuitem id="menu_pet_caretaker_booking_booking" name="Pet Caretaker" parent="menu_root"
+            action="action_pet_caretaker_booking" />
+        
+
+    </data>
+</odoo>

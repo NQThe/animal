@@ -1,0 +1,65 @@
+<odoo>
+    <data>
+        <!-- Cập nhật ID cho tree view -->
+        <record id="tree_view_pet_caretakes" model="ir.ui.view">
+            <field name="name">Tree_View_Pet</field>
+            <field name="model">pet.caretaker</field>
+            <field name="arch" type="xml">
+               <tree>
+                    <field name='name'/>
+                    <field name='experience_years'/>
+                    <field name='specialty_ids'/>
+                    <field name='phone'/>
+                    <field name='email'/>
+               </tree>
+            </field>
+        </record>
+
+        <record id="form_view_pet_caretakers" model="ir.ui.view">
+            <field name="name">form_view_pet_caretakers</field>
+            <field name="model">pet.caretaker</field>
+            <field name="arch" type="xml">
+                <form string="Form View Pet Profiles">
+                    <header>
+
+                        <!-- Nút 'Sold' chỉ hiển thị khi status là 'offer_accepted' -->
+                        <!-- <button name="action_sold" string="Sold" type="object"
+                                attrs="{'invisible': [('status', '!=', 'offer_accepted')]}"/>
+                       <field name="status" widget="statusbar" statusbar_visible="new,offer_received,offer_accepted,sold,canceled"/> -->
+                    </header>
+                    <sheet>
+                        <div class="Information">
+                            <div>
+                                <h1>Doctor:<field name='name'/></h1>
+                            </div>
+                            <div>
+                                <h3>experience_years:<field name='experience_years'/></h3>
+                                <h3>Specialty:<field name='specialty_ids' widget="many2many_tags" options="{'color_field': 'color'}" /></h3>
+                                <h3>Phone:<field name='phone'/></h3>
+                                <h3>Email:<field name='email'/></h3>
+                            </div>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        
+        <!-- Actions -->
+        <record id="action_pet_caretaker" model="ir.actions.act_window">
+            <field name="name">Animal</field>
+            <field name="res_model">pet.caretaker</field>
+            <field name="view_mode">tree,form</field>
+            
+            <!-- <field name="search_view_id" ref="view_estate_property_search"/>
+            <field name="context">{'search_default_available': True}</field> -->
+        </record>
+
+        <!-- Menu -->
+        
+        <menuitem id="menu_pet_caretaker" name="Pet Caretaker" parent="menu_root"
+            action="action_pet_caretaker" />
+        
+
+    </data>
+</odoo>
